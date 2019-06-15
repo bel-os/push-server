@@ -3,6 +3,7 @@ const srs = require('secure-random-string');
 
 console.log('Starting websocket client...');
 const client = new WebSocket('ws://localhost:8080/');
+// const client = new WebSocket('wss://push.sabaos.com/');
 
 function sendMessage(msg) {
     client.send(JSON.stringify(msg));
@@ -17,6 +18,14 @@ client.onopen = event => {
         type: 'register',
         deviceId: deviceId,
     });
+    setTimeout(() => {
+        console.log('Registering a test app...');
+        sendMessage({
+            type: 'registerApp',
+            app: 'com.sabaos.test',
+            token: '1234',
+        });
+    }, 1000);
 };
 
 client.onmessage = event => {

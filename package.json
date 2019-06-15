@@ -9,7 +9,8 @@
   "private": false,
   "scripts": {
     "runserver": "node server.js",
-    "runclient": "node client.js"
+    "runclient": "node client.js",
+    "sendpush": "node applicationserver.js"
   },
   "dependencies": {
     "secure-random-string": "^1.1.0",
